@@ -59,6 +59,7 @@ export default function Header() {
   // settings from your public API
   const [settingsLoading, setSettingsLoading] = useState(true);
   const [settings, setSettings] = useState(null);
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   // Handle hydration
   useEffect(() => {
@@ -98,7 +99,7 @@ export default function Header() {
       // const res = await fetch("/api/settings/general", { cache: "no-store" });
 
       // ✅ Option B: call Laravel directly:
-      const res = await fetch("http://192.168.0.106:8000/api/settings/general", {
+      const res = await fetch(`${baseUrl}/api/settings/general`, {
         cache: "no-store",
       });
 
