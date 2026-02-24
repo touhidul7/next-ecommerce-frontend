@@ -5,8 +5,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "ecommerce.skinvee.org",
-        // port: "8000",
-        pathname: "/storage/**",
+        pathname: "/storage/**",  // Matches images under /storage/
       },
     ],
   },
