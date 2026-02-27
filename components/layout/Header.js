@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import Container from "@/components/ui/Container";
@@ -8,8 +9,8 @@ import { useAuth } from "@/providers/AuthProvider";
 import Link from "next/link";
 import ProductSearchBar from "./ProductSearchBar";
 import HeaderWishlistButton from "./HeaderWishlistButton";
+import Image from "next/image";
 
-/* eslint-disable @next/next/no-html-link-for-pages */
 
 // Loading Skeleton Component
 function HeaderSkeleton() {
@@ -143,9 +144,11 @@ export default function Header() {
         {/* Logo (now dynamic) */}
         <Link href="/" className="flex items-center gap-2 shrink-0 group">
           {logoUrl ? (
-            <img
+            <Image
               src={logoUrl}
               alt={siteName}
+              width={90}
+              height={90}
               className="w-9 h-9 rounded-xl object-cover border border-gray-200 bg-white"
             />
           ) : (
@@ -159,7 +162,7 @@ export default function Header() {
         </Link>
 
         {/* Search (desktop) */}
-        <ProductSearchBar />
+        <ProductSearchBar display="desktop" />
 
         {/* Actions */}
         <div className="flex items-center gap-3 ml-auto">
@@ -187,7 +190,7 @@ export default function Header() {
           >
             <ShoppingCart className="w-5 h-5" />
             {cartCount > 0 ? (
-              <span className="absolute -top-2 -right-2 text-[10px] bg-red-500 text-white rounded-full px-1.5 py-0.5 min-w-[18px] text-center">
+              <span className="absolute -top-2 -right-2 text-[10px] bg-red-500 text-white rounded-full px-1.5 py-0.5 min-w-4.5 text-center">
                 {cartCount > 99 ? "99+" : cartCount}
               </span>
             ) : null}
@@ -290,7 +293,7 @@ export default function Header() {
 
       {/* Mobile search */}
       <div className="md:hidden px-4 pb-3">
-        <div className="relative">
+       {/*  <div className="relative">
           <input
             className="w-full rounded-full border border-gray-300 bg-white px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-200 transition-all"
             placeholder="পণ্য সার্চ করুন..."
@@ -298,7 +301,8 @@ export default function Header() {
           <button className="absolute right-1 top-1/2 -translate-y-1/2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors">
             খুঁজুন
           </button>
-        </div>
+        </div> */}
+        <ProductSearchBar />
       </div>
 
       {/* Animation styles */}
